@@ -18,4 +18,8 @@ export default createGlobalStyle`
     background-color: ${props => props.theme.backgroundColor};
     color: ${props => props.theme.primaryText};
   }
+
+  button {
+    cursor: pointer;
+  }
 `
