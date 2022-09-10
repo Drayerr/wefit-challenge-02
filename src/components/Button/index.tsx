@@ -6,6 +6,15 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-export function Button({ children, onClick }: ButtonProps) {
-  return <Container onClick={onClick}>{children}</Container>
+// Passando children para alterar elementos dentro do botão
+// Passando onclick para alterar o funcionamento
+// Passando ...rest para alterar classes
+export function Button({ children, onClick, ...rest }: ButtonProps) {
+  console.log(rest)
+
+  return (
+    <Container {...rest} onClick={onClick}>
+      {children}
+    </Container>
+  )
 }

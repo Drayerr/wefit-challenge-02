@@ -1,11 +1,14 @@
-import React from 'react'
-
+import { ContentPlaceHolder } from '../../components/ContentPlaceHolder'
 import { Container } from './styles'
 
 export function Cart() {
   return (
     <Container>
-      <div>Cart</div>
+      {/* Exibindo PlaceHolder caso não tenha conteúdo */}
+      <ContentPlaceHolder
+        actionButtonContent={'Voltar'}
+        onClick={() => console.log('Teste')}
+      />
     </Container>
   )
 }
