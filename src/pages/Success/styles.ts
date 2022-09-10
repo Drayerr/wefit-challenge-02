@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '../../components/Button'
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +14,18 @@ export const Container = styled.div`
 
   background: ${props => props.theme.containerBackgroundColor};
 
+  font-size: 1.25rem;
+
   svg {
-    margin-top: 50px;
+    margin-top: 22px;
   }
+`
+export const ActionButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+
+  font-size: 0.875rem;
+
+  width: 180px;
 `
