@@ -8,7 +8,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body, input, button {
+  html {
+    font-size: 100%;
+  }
+
+  body, input, button {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 0.875rem
