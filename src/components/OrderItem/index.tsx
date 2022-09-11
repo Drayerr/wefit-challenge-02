@@ -14,7 +14,20 @@ interface OrderItemProps {
 }
 
 export function OrderItem({ amount, image, price, title, id }: OrderItemProps) {
-  const { removeProduct } = useCart()
+  const { removeProduct, updateProductAmount } = useCart()
+
+  function amountIncrement() {
+    const newAmount = amount + 1
+    updateProductAmount({ productId: id, amount: newAmount })
+  }
+
+  function amountDecrement() {
+    let newAmount = amount - 1
+    if (newAmount < 1) {
+      newAmount = 1
+    }
+    updateProductAmount({ productId: id, amount: newAmount })
+  }
 
   return (
     <Container>
@@ -28,12 +41,16 @@ export function OrderItem({ amount, image, price, title, id }: OrderItemProps) {
       </Product>
 
       <Amount>
-        <PlusButtonSvg />
+        <GhostButton onClick={amountDecrement} disabled={amount < 2}>
+          <MinusButtonSvg />
+        </GhostButton>
         <input type="Amount" value={amount} disabled />
-        <MinusButtonSvg />
+        <GhostButton onClick={amountIncrement}>
+          <PlusButtonSvg />
+        </GhostButton>
       </Amount>
 
-      <SubTotal>R$ {price * amount}</SubTotal>
+      <SubTotal>R$ {(price * amount).toFixed(2)}</SubTotal>
 
       <GhostButton
         onClick={() => {

@@ -62,6 +62,13 @@ export const SubTotal = styled.div`
 `
 
 export const GhostButton = styled.button`
+  display: flex;
+
   border: none;
   background: none;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `

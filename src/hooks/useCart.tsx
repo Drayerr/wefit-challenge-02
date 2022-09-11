@@ -62,7 +62,16 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
     productId,
   }: UpdateProductAmount) => {
-    console.log('opa')
+    const index = cart.findIndex(c => c.id === productId)
+    const exists = index !== -1
+
+    if (exists) {
+      const newCart = [...cart]
+      newCart[index].amount = amount
+      setCart(newCart)
+    } else {
+      alert('Item não encontrado.')
+    }
   }
 
   return (
