@@ -1,4 +1,5 @@
-import { Amount, Container, CustomLink, LeftSide } from './styles'
+import { Amount, Container, LeftSide } from './styles'
+import { CustomLink } from '../../components/CustomLink'
 
 import { ReactComponent as Basket } from '../../assets/Basket.svg'
 import { useCart } from '../../hooks/useCart'
@@ -8,7 +9,7 @@ export function CartButton() {
 
   return (
     <Container>
-      <CustomLink to="/cart">
+      <CustomLink route="/cart">
         <LeftSide>
           <div>Meu Carrinho</div>
           <Amount>{cart.length} items</Amount>

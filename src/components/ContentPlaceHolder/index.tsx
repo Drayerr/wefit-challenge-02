@@ -1,8 +1,8 @@
-import { ActionButton, Container, CustomLink } from './styles'
+import { ActionButton, Container } from './styles'
 
 import { ReactComponent as NoContent } from '../../assets/NoContent.svg'
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { CustomLink } from '../CustomLink'
 
 interface ContentPlaceHolderProps {
   actionButtonContent: ReactNode
@@ -15,7 +15,7 @@ export function ContentPlaceHolder({
     <Container>
       {'Parece que não há nada por aqui :('}
       <NoContent />
-      <CustomLink to="/">
+      <CustomLink route="/">
         <ActionButton>{actionButtonContent}</ActionButton>
       </CustomLink>
     </Container>

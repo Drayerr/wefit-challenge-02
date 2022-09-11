@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Button } from '../Button'
@@ -29,9 +28,4 @@ export const ActionButton = styled(Button)`
   font-size: 0.875rem;
 
   width: 180px;
-`
-export const CustomLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
 `
