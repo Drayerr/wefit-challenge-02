@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.button`
@@ -22,4 +23,10 @@ export const LeftSide = styled.div`
 export const Amount = styled.div`
   color: ${props => props.theme.secondaryText};
   font-size: 0.75rem;
+`
+
+export const CustomLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 `

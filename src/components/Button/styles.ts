@@ -14,6 +14,8 @@ export const Container = styled.button`
 
   padding: 11px 7px;
 
+  white-space: nowrap;
+
   transition: 0.3s;
   &:hover {
     opacity: 0.8;

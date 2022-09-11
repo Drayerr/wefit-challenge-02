@@ -1,0 +1,74 @@
+import { createContext, ReactNode, useContext, useState } from 'react'
+
+import { Product } from '../@types/cart'
+
+import { api } from '../services/api'
+
+interface CartProviderProps {
+  children: ReactNode
+}
+
+interface UpdateProductAmount {
+  productId: number
+  amount: number
+}
+
+interface CartContextData {
+  cart: Product[]
+  addProduct: (productId: number) => Promise<void>
+  removeProduct: (productId: number) => void
+  updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void
+}
+
+const CartContext = createContext<CartContextData>({} as CartContextData)
+
+export function CartProvider({ children }: CartProviderProps): JSX.Element {
+  const [cart, setCart] = useState<Product[]>([])
+
+  const addProduct = async (productId: number) => {
+    try {
+      const index = cart.findIndex(c => c.id === productId)
+      const alreadyExists = index !== -1
+      const newCart = [...cart]
+
+      if (alreadyExists) {
+        newCart.splice(index, 1, {
+          ...cart[index],
+          amount: cart[index].amount + 1,
+        })
+      } else {
+        const { data } = await api.get<Product>(`/products/${productId}`)
+        newCart.push({ ...data, amount: 1 })
+      }
+
+      setCart(newCart)
+    } catch {
+      alert('Não foi possível adicionar o produto')
+    }
+  }
+
+  const removeProduct = async (productId: number) => {
+    console.log('opa')
+  }
+
+  const updateProductAmount = async ({
+    amount,
+    productId,
+  }: UpdateProductAmount) => {
+    console.log('opa')
+  }
+
+  return (
+    <CartContext.Provider
+      value={{ cart, addProduct, removeProduct, updateProductAmount }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
+}
+
+export function useCart(): CartContextData {
+  const context = useContext(CartContext)
+
+  return context
+}

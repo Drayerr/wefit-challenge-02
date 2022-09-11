@@ -10,8 +10,6 @@ interface ButtonProps {
 // Passando onclick para alterar o funcionamento
 // Passando ...rest para alterar classes
 export function Button({ children, onClick, ...rest }: ButtonProps) {
-  console.log(rest)
-
   return (
     <Container {...rest} onClick={onClick}>
       {children}

@@ -3,16 +3,13 @@ import { OrderBox } from '../../components/OrderBox'
 import { Container } from './styles'
 
 export function Cart() {
-  const cartEmpty = false
+  const cartEmpty = true
 
   return (
     <Container>
       {/* Exibindo PlaceHolder caso não tenha conteúdo */}
       {cartEmpty ? (
-        <ContentPlaceHolder
-          actionButtonContent={'Voltar'}
-          onClick={() => console.log('Teste')}
-        />
+        <ContentPlaceHolder actionButtonContent={'Voltar'} />
       ) : (
         <OrderBox />
       )}

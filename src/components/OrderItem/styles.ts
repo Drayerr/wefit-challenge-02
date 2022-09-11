@@ -14,7 +14,12 @@ export const Container = styled.div`
   width: 100%;
 
   display: grid;
-  grid-template-columns: 135px 150px 150px 210px 40px;
+  grid-template-columns:
+    minmax(auto, 135px)
+    minmax(auto, 150px)
+    minmax(auto, 150px)
+    minmax(auto, 210px)
+    minmax(auto, 40px);
 
   img {
     width: 90px;

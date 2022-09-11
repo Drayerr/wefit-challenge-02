@@ -2,19 +2,33 @@ import { Button } from '../Button'
 import { Container, Price, Title } from './styles'
 
 import { ReactComponent as Cart } from '../../assets/Cart.svg'
+import { useCart } from '../../hooks/useCart'
 
-export function MovieCard() {
+interface MovieCardProps {
+  id: number
+  title: string
+  price: number
+  image: string
+}
+
+export function MovieCard({ title, price, image, id }: MovieCardProps) {
+  const { addProduct, cart } = useCart()
+
+  const amount = cart.find(c => c.id === id)?.amount || 0
+
+  function handleAddProduct(id: number) {
+    addProduct(id)
+  }
+
   return (
     <Container>
-      <img
-        src="https://www.imagemhost.com.br/images/2022/07/10/viuva-negra.png"
-        alt="Viúva Negra"
-      />
-      <Title>Título no centro</Title>
-      <Price>R$ 9,99</Price>
-      <Button>
+      <img src={image} alt="Viúva Negra" />
+      <Title>{title}</Title>
+      <Price>R$ {price}</Price>
+      <Button onClick={() => handleAddProduct(id)}>
         <span>
-          <Cart />1
+          <Cart />
+          {amount}
         </span>
         ADICIONAR AO CARRINHO
       </Button>
