@@ -24,7 +24,12 @@ export function MovieCard({ title, price, image, id }: MovieCardProps) {
     <Container>
       <img src={image} alt="Viúva Negra" />
       <Title>{title}</Title>
-      <Price>R$ {price}</Price>
+      <Price>
+        {new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(price)}
+      </Price>
       <Button onClick={() => handleAddProduct(id)}>
         <span>
           <Cart />

@@ -37,7 +37,12 @@ export function OrderItem({ amount, image, price, title, id }: OrderItemProps) {
 
       <Product>
         <div>{title}</div>
-        <div>R$ {price}</div>
+        <div>
+          {new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          }).format(price)}
+        </div>
       </Product>
 
       <Amount>
@@ -50,7 +55,12 @@ export function OrderItem({ amount, image, price, title, id }: OrderItemProps) {
         </GhostButton>
       </Amount>
 
-      <SubTotal>R$ {(price * amount).toFixed(2)}</SubTotal>
+      <SubTotal>
+        {new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(price * amount)}
+      </SubTotal>
 
       <GhostButton
         onClick={() => {

@@ -36,7 +36,12 @@ export function OrderBox() {
         </FinishOrderButton>
         <div>
           TOTAL
-          <span>R$ {total.toFixed(2)}</span>
+          <span>
+            {new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            }).format(total)}
+          </span>
         </div>
       </Footer>
     </Container>
