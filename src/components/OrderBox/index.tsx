@@ -2,10 +2,22 @@ import { OrderItem } from '../OrderItem'
 
 import { useCart } from '../../hooks/useCart'
 
+import { useNavigate } from 'react-router-dom'
+
 import { Container, FinishOrderButton, Footer, Header } from './styles'
 
 export function OrderBox() {
-  const { cart } = useCart()
+  const { cart, clearCart } = useCart()
+  const navigate = useNavigate()
+  const total = cart.reduce((sum, item) => {
+    return sum + item.amount * item.price
+  }, 0)
+
+  function finishOrder() {
+    clearCart()
+    // O Replace faz sumir do topo do navegador a opção de voltar à página anterior
+    navigate('/success', { replace: true })
+  }
 
   return (
     <Container>
@@ -19,10 +31,12 @@ export function OrderBox() {
       ))}
 
       <Footer>
-        <FinishOrderButton>FINALIZAR PEDIDO</FinishOrderButton>
+        <FinishOrderButton onClick={finishOrder}>
+          FINALIZAR PEDIDO
+        </FinishOrderButton>
         <div>
           TOTAL
-          <span>R$ 29,90</span>
+          <span>R$ {total.toFixed(2)}</span>
         </div>
       </Footer>
     </Container>
