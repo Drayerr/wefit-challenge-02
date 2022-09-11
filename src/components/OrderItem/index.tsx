@@ -4,28 +4,32 @@ import { ReactComponent as PlusButtonSvg } from '../../assets/PlusButton.svg'
 import { ReactComponent as MinusButtonSvg } from '../../assets/MinusButton.svg'
 import { ReactComponent as TrashSvg } from '../../assets/Trash.svg'
 
-export function OrderItem() {
+interface OrderItemProps {
+  image: string
+  title: string
+  price: number
+  amount: number
+}
+
+export function OrderItem({ amount, image, price, title }: OrderItemProps) {
   return (
     <Container>
       <div>
-        <img
-          src="https://www.imagemhost.com.br/images/2022/07/10/spider-man.png"
-          alt={'Homem Aranha'}
-        />
+        <img src={image} alt={title} />
       </div>
 
       <Product>
-        <div>Homem Aranha</div>
-        <div>R$ {'29,90'}</div>
+        <div>{title}</div>
+        <div>R$ {price}</div>
       </Product>
 
       <Amount>
         <PlusButtonSvg />
-        <input type="Amount" value={1} disabled />
+        <input type="Amount" value={amount} disabled />
         <MinusButtonSvg />
       </Amount>
 
-      <SubTotal>R$ {'29,90'}</SubTotal>
+      <SubTotal>R$ {price * amount}</SubTotal>
 
       <TrashSvg />
     </Container>

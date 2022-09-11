@@ -1,9 +1,13 @@
 import { ContentPlaceHolder } from '../../components/ContentPlaceHolder'
 import { OrderBox } from '../../components/OrderBox'
+
+import { useCart } from '../../hooks/useCart'
+
 import { Container } from './styles'
 
 export function Cart() {
-  const cartEmpty = true
+  const { cart } = useCart()
+  const cartEmpty = cart.length < 1
 
   return (
     <Container>
