@@ -59,10 +59,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   }
 
-  const updateProductAmount = async ({
-    amount,
-    productId,
-  }: UpdateProductAmount) => {
+  const updateProductAmount = ({ amount, productId }: UpdateProductAmount) => {
     const index = cart.findIndex(c => c.id === productId)
     const exists = index !== -1
 
