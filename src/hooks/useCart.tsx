@@ -48,7 +48,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
   }
 
   const removeProduct = async (productId: number) => {
-    console.log('opa')
+    try {
+      const index = cart.findIndex(c => c.id === productId)
+      const newCart = [...cart]
+      newCart.splice(index, 1)
+      setCart(newCart)
+    } catch {
+      alert('Não foi possível remover')
+    }
   }
 
   const updateProductAmount = async ({

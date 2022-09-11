@@ -60,3 +60,8 @@ export const SubTotal = styled.div`
   display: flex;
   justify-content: center;
 `
+
+export const GhostButton = styled.button`
+  border: none;
+  background: none;
+`
