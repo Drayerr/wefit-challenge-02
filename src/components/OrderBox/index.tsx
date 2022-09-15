@@ -5,6 +5,7 @@ import { useCart } from '../../hooks/useCart'
 import { useNavigate } from 'react-router-dom'
 
 import { Container, FinishOrderButton, Footer, Header } from './styles'
+import { formatNumber } from '../../utils/formatNumber'
 
 export function OrderBox() {
   const { cart, clearCart } = useCart()
@@ -36,12 +37,7 @@ export function OrderBox() {
         </FinishOrderButton>
         <div>
           TOTAL
-          <span>
-            {new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-            }).format(total)}
-          </span>
+          <span>{formatNumber(total)}</span>
         </div>
       </Footer>
     </Container>

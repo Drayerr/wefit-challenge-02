@@ -3,6 +3,7 @@ import { Container, Price, Title } from './styles'
 
 import { ReactComponent as Cart } from '../../assets/Cart.svg'
 import { useCart } from '../../hooks/useCart'
+import { formatNumber } from '../../utils/formatNumber'
 
 interface MovieCardProps {
   id: number
@@ -24,12 +25,7 @@ export function MovieCard({ title, price, image, id }: MovieCardProps) {
     <Container>
       <img src={image} alt="Viúva Negra" />
       <Title>{title}</Title>
-      <Price>
-        {new Intl.NumberFormat('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-        }).format(price)}
-      </Price>
+      <Price>{formatNumber(price)}</Price>
       <Button onClick={() => handleAddProduct(id)}>
         <span>
           <Cart />

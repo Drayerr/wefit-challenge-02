@@ -5,6 +5,7 @@ import { ReactComponent as MinusButtonSvg } from '../../assets/MinusButton.svg'
 import { ReactComponent as TrashSvg } from '../../assets/Trash.svg'
 
 import { useCart } from '../../hooks/useCart'
+import { formatNumber } from '../../utils/formatNumber'
 interface OrderItemProps {
   id: number
   image: string
@@ -55,12 +56,7 @@ export function OrderItem({ amount, image, price, title, id }: OrderItemProps) {
         </GhostButton>
       </Amount>
 
-      <SubTotal>
-        {new Intl.NumberFormat('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-        }).format(price * amount)}
-      </SubTotal>
+      <SubTotal>{formatNumber(price * amount)}</SubTotal>
 
       <GhostButton
         onClick={() => {
